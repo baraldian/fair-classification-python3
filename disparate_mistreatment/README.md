@@ -206,7 +206,7 @@ You will notice that in this dataset, controlling for unfairness w.r.t. false po
 For training a fair classifier, set the values for constraints that you want to apply, and call the following function:
 
 ```python
-import utils as ut
+import utils_general as ut
 import funcs_disp_mist as fdm
 
 w = fdm.train_model_disp_mist(x_train, y_train, x_control_train, loss_function, EPS, cons_params)

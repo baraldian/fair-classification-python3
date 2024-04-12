@@ -10,7 +10,7 @@ SEED = 1122334455
 seed(SEED) # set the random seed so that the random permutations can be reproduced again
 np.random.seed(SEED)
 sys.path.insert(0, '../../fair_classification/') 
-import utils as ut
+import utils_general as ut
 
 
 def generate_synthetic_data(data_type, plot_data=False):

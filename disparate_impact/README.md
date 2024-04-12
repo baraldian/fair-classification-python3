@@ -182,13 +182,14 @@ $ python demo_constraints.py
 For training a fair classifier, set the values for constraints that you want to apply, and call the following function:
 
 ```python
-import utils as ut
+import utils_general as ut
 
 apply_fairness_constraints = 0
 apply_accuracy_constraint = 0
 sep_constraint = 0
 gamma = 0
-w = ut.train_model(x_train, y_train, x_control_train, loss_function, apply_fairness_constraints, apply_accuracy_constraint, sep_constraint, sensitive_attrs, sensitive_attrs_to_cov_thresh, gamma)
+w = ut.train_model(x_train, y_train, x_control_train, loss_function, apply_fairness_constraints,
+                   apply_accuracy_constraint, sep_constraint, sensitive_attrs, sensitive_attrs_to_cov_thresh, gamma)
 ```
 
 The function resides in file "fair_classification/utils.py". **Documentation about the type/format of the variables can be found at the beginning of the function**.

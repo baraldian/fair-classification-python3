@@ -2,7 +2,7 @@ import os,sys
 import numpy as np
 from prepare_adult_data import *
 sys.path.insert(0, '../../fair_classification/') # the code for fair classification is in this directory
-import utils as ut
+import utils_general as ut
 import loss_funcs as lf # loss funcs that can be optimized subject to various constraints
 
 

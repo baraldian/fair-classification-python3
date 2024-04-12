@@ -1,7 +1,7 @@
 import os,sys
 import urllib2
 sys.path.insert(0, '../../fair_classification/') # the code for fair classification is in this directory
-import utils as ut
+import utils_general as ut
 import numpy as np
 from random import seed, shuffle
 SEED = 1122334455

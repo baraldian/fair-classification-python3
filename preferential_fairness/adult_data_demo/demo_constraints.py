@@ -49,7 +49,7 @@ def test_adult_data():
     for s_attr_val in set(x_sensitive_train):
         idx = x_sensitive_train==s_attr_val # the index for the current sensitive feature group
         clf = LinearClf(loss_function, lam=lam[s_attr_val], train_multiple=False)
-        clf.fit(x_train[idx], y_train[idx], x_sensitive_train[idx], cons_params)
+        clf.fit(x_train[idx], y_train[idx], x_sensitive_train[idx])
         clf_group[s_attr_val] = clf
 
     # For simplicity of computing stats, we merge the two trained classifiers
@@ -66,7 +66,7 @@ def test_adult_data():
     print "\n\n== Parity classifier =="
     cons_params["cons_type"] = 0
     clf = LinearClf(loss_function, lam=1e-5, train_multiple=False)
-    clf.fit(x_train, y_train, x_sensitive_train, cons_params)
+    clf.fit(x_train, y_train, x_sensitive_train)
     print_stats_and_plots(x_test, y_test, x_sensitive_test, clf)
 
     # compute the proxy value, will need this for the preferential classifiers
@@ -88,7 +88,7 @@ def test_adult_data():
     cons_params["s_val_to_cons_sum"] = s_val_to_cons_sum_di
     lam = {0:1e-3, 1:1e-5} 
     clf = LinearClf(loss_function, lam=lam, train_multiple=True)
-    clf.fit(x_train, y_train, x_sensitive_train, cons_params)
+    clf.fit(x_train, y_train, x_sensitive_train)
     print_stats_and_plots(x_test, y_test, x_sensitive_test, clf)    
     
 
@@ -101,7 +101,7 @@ def test_adult_data():
     cons_params["s_val_to_cons_sum"] = s_val_to_cons_sum_di
     lam = {0:1e-3, 1:2e-3} 
     clf = LinearClf(loss_function, lam=lam, train_multiple=True)
-    clf.fit(x_train, y_train, x_sensitive_train, cons_params)
+    clf.fit(x_train, y_train, x_sensitive_train)
     print_stats_and_plots(x_test, y_test, x_sensitive_test, clf)    
     
 

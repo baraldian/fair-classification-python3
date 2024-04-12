@@ -42,7 +42,7 @@ Next, the code will train a logistic regression classifier optimizing accuracy f
 
 ```python
 clf = LinearClf(loss_function, lam=lam[s_attr_val], train_multiple=False)
-clf.fit(x_train[idx], y_train[idx], x_sensitive_train[idx], cons_params)
+clf.fit(x_train[idx], y_train[idx], x_sensitive_train[idx])
 ```
 
 We are training the classifier without any constraints (more on constraints to come later).
@@ -74,11 +74,10 @@ Next, we train a classifier satisfying both these criteria.
 
 ### 1.3. Training a parity fair classifier
 
-
 ```python
 cons_params["cons_type"] = 0
 clf = LinearClf(loss_function, lam=0.01, train_multiple=False)
-clf.fit(x_train, y_train, x_sensitive_train, cons_params)
+clf.fit(x_train, y_train, x_sensitive_train)
 ```
 This step uses the methodology introduced in our <a href="https://arxiv.org/abs/1507.05259" target="_blank">earlier AISTATS paper</a> for more details.
 
@@ -114,9 +113,9 @@ First we train a preferred impact classifier. A classifier that ensures that eac
 cons_params["cons_type"] = 1
 cons_params["tau"] = 1
 cons_params["s_val_to_cons_sum"] = s_val_to_cons_sum_di
-lam = {0:2.5, 1:0.01} 
+lam = {0: 2.5, 1: 0.01}
 clf = LinearClf(loss_function, lam=lam, train_multiple=True)
-clf.fit(x_train, y_train, x_sensitive_train, cons_params)
+clf.fit(x_train, y_train, x_sensitive_train)
 ```
 
 The results and the decision boundary for this experiment are:
@@ -145,9 +144,9 @@ Next, we train a classifier that is _both_ preferred impact as well as preferred
 ```python
 cons_params["cons_type"] = 3
 cons_params["s_val_to_cons_sum"] = s_val_to_cons_sum_di
-lam = {0:2.5, 1:0.35}
+lam = {0: 2.5, 1: 0.35}
 clf = LinearClf(loss_function, lam=lam, train_multiple=True)
-clf.fit(x_train, y_train, x_sensitive_train, cons_params)
+clf.fit(x_train, y_train, x_sensitive_train)
 ```
 
 The output looks like:
